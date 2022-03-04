@@ -7,10 +7,6 @@ const url = 'https://course-api.com/react-tabs-project'
 function App() {
   
   const [ jobs, setJobs ] = useState([]);
-
-  // useEffect(() => {
-    //   console.log(jobs.company)
-    // }, [jobs]);
     
     const fetchJobs = async () => {
       const res = await fetch(url);
