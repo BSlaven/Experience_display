@@ -26,6 +26,12 @@ function App() {
   return (
     <div className="App">
       <h2 className='title'>Experience</h2>
+      <section className='main-section'>
+        <aside>
+          {}
+        </aside>
+        <main></main>
+      </section>
     </div>
   )
 }
