@@ -16,11 +16,16 @@ function App() {
     }
 
     useEffect(() => {
+      console.log(jobs);
+    }, [jobs])
+
+    useEffect(() => {
       fetchJobs();
     }, []);
   
   return (
     <div className="App">
+      <h2 className='title'>Experience</h2>
     </div>
   )
 }
