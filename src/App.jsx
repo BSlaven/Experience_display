@@ -8,11 +8,11 @@ function App() {
   
   const [ jobs, setJobs ] = useState([]);
   const [ companies, setCompanies ] = useState([]);
+  const [ currentCompany, setCurrentCompany ] = useState({});
 
     const fetchJobs = async () => {
       const res = await fetch(url);
       const newJobs = await res.json();
-      console.log(newJobs);
       setJobs(newJobs);
       setCompanies(newJobs.map(item => item.company));
     }
@@ -26,11 +26,16 @@ function App() {
     }, [companies])
 
     useEffect(() => {
+      console.log(currentCompany);
+    }, [currentCompany])
+
+    useEffect(() => {
       fetchJobs();
     }, []);
 
     const selectCompany = company => {
-      console.log(company);
+      const myCompany = jobs.find(job => job.company === company);
+      setCurrentCompany(myCompany);
     }
   
   return (
@@ -38,9 +43,17 @@ function App() {
       <h2 className='title'>Experience</h2>
       <section className='main-section'>
         <aside className='sidebar'>
-          {companies && companies.map(company => <h5 onClick={() => selectCompany(company)}>{company}</h5> )}
+          {companies && companies.map(company => (
+            <h5
+              key={company}
+              onClick={() => selectCompany(company)}>
+              {company}
+            </h5>
+          ))}
         </aside>
-        <main></main>
+        <main>
+          
+        </main>
       </section>
     </div>
   )
