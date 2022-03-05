@@ -7,12 +7,14 @@ const url = 'https://course-api.com/react-tabs-project'
 function App() {
   
   const [ jobs, setJobs ] = useState([]);
-    
+  const [ companies, setCompanies ] = useState([]);
+  const [ currentCompany, setCurrentCompany ] = useState({});
+
     const fetchJobs = async () => {
       const res = await fetch(url);
       const newJobs = await res.json();
-      console.log(newJobs);
       setJobs(newJobs);
+      setCompanies(newJobs.map(item => item.company));
     }
 
     useEffect(() => {
@@ -20,17 +22,38 @@ function App() {
     }, [jobs])
 
     useEffect(() => {
+      console.log(companies);
+    }, [companies])
+
+    useEffect(() => {
+      console.log(currentCompany);
+    }, [currentCompany])
+
+    useEffect(() => {
       fetchJobs();
     }, []);
+
+    const selectCompany = company => {
+      const myCompany = jobs.find(job => job.company === company);
+      setCurrentCompany(myCompany);
+    }
   
   return (
     <div className="App">
       <h2 className='title'>Experience</h2>
       <section className='main-section'>
-        <aside>
-          {}
+        <aside className='sidebar'>
+          {companies && companies.map(company => (
+            <h5
+              key={company}
+              onClick={() => selectCompany(company)}>
+              {company}
+            </h5>
+          ))}
         </aside>
-        <main></main>
+        <main>
+          
+        </main>
       </section>
     </div>
   )
