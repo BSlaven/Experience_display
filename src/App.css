@@ -24,3 +24,16 @@
   margin: 0 auto;
   border-radius: 300px;
 }
+
+.main-section {
+  border: 1px solid red;
+  width: 90%;
+  max-width: 1000px;
+  height: min-content;
+  display: flex;
+  gap: 4rem;
+  padding: 2rem;
+}
+
+.main {
+}
