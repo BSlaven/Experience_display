@@ -29,7 +29,7 @@ function App() {
 
     useEffect(() => {
       const myDuties = currentCompany.duties;
-      setDuties(myDuties);
+      setDuties([... new Set(myDuties)]);
     }, [currentCompany])
 
     useEffect(() => {
@@ -56,6 +56,7 @@ function App() {
           ))}
         </aside>
         <main className='main'>
+          <h4>{currentCompany.dates}</h4>
           {duties && duties.map(duty => (
             <p key={duty}>{duty}</p>
           ))}
