@@ -49,6 +49,7 @@ function App() {
         <aside className='sidebar'>
           {jobs && jobs.map(job => (
             <h5
+              className={job.company === currentCompany.company ? 'active' : ''}
               key={job.id}
               onClick={(e) => selectCompany(e, job.company)}>
               {job.company}
