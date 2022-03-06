@@ -39,7 +39,16 @@
   padding-right: 3rem;
 }
 
+.sidebar h5 {
+  cursor: pointer;
+  padding: 0.5rem; 
+}
+
+.sidebar h5:is(:hover, :focus) {
+  background-color: rgba(204, 204, 252, 0.623);
+}
+
 .sidebar h5.active {
-  padding-left: 0.5rem;
+  /* padding-left: 0.5rem; */
   border-left: 3px solid rgb(185, 218, 0);
 }
