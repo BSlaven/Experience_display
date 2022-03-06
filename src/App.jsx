@@ -28,17 +28,16 @@ function App() {
     // }, [companies])
 
     useEffect(() => {
-      console.log(currentCompany);
       const myDuties = currentCompany.duties;
       setDuties(myDuties);
-      console.log(myDuties);
     }, [currentCompany])
 
     useEffect(() => {
       fetchJobs();
     }, []);
 
-    const selectCompany = company => {
+    const selectCompany = (e, company) => {
+      e.target.classList.add('active');
       const myCompany = jobs.find(job => job.company === company);
       setCurrentCompany(myCompany);
     }
@@ -48,11 +47,11 @@ function App() {
       <h2 className='title'>Experience</h2>
       <section className='main-section'>
         <aside className='sidebar'>
-          {companies && companies.map(company => (
+          {jobs && jobs.map(job => (
             <h5
-              key={company}
-              onClick={() => selectCompany(company)}>
-              {company}
+              key={job.id}
+              onClick={(e) => selectCompany(e, job.company)}>
+              {job.company}
             </h5>
           ))}
         </aside>

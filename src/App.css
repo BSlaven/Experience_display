@@ -35,5 +35,12 @@
   padding: 2rem;
 }
 
-.main {
+.sidebar {
+  border-right: 2px solid rgba(204, 204, 252, 0.623);
+  padding-right: 3rem;
+}
+
+.sidebar h5.active {
+  padding-left: 0.5rem;
+  border-left: 3px solid rgb(185, 218, 0);
 }
