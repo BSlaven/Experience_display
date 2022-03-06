@@ -7,7 +7,6 @@ const url = 'https://course-api.com/react-tabs-project'
 function App() {
   
   const [ jobs, setJobs ] = useState([]);
-  const [ companies, setCompanies ] = useState([]);
   const [ currentCompany, setCurrentCompany ] = useState({});
   const [ duties, setDuties ] = useState([]);
 
@@ -15,17 +14,8 @@ function App() {
       const res = await fetch(url);
       const newJobs = await res.json();
       setJobs(newJobs);
-      setCompanies(newJobs.map(item => item.company));
       setCurrentCompany(newJobs[0]);
     }
-
-    // useEffect(() => {
-    //   console.log(jobs);
-    // }, [jobs])
-
-    // useEffect(() => {
-    //   console.log(companies);
-    // }, [companies])
 
     useEffect(() => {
       const myDuties = currentCompany.duties;
@@ -37,7 +27,6 @@ function App() {
     }, []);
 
     const selectCompany = (e, company) => {
-      e.target.classList.add('active');
       const myCompany = jobs.find(job => job.company === company);
       setCurrentCompany(myCompany);
     }
