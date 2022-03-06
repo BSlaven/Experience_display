@@ -9,24 +9,29 @@ function App() {
   const [ jobs, setJobs ] = useState([]);
   const [ companies, setCompanies ] = useState([]);
   const [ currentCompany, setCurrentCompany ] = useState({});
+  const [ duties, setDuties ] = useState([]);
 
     const fetchJobs = async () => {
       const res = await fetch(url);
       const newJobs = await res.json();
       setJobs(newJobs);
       setCompanies(newJobs.map(item => item.company));
+      setCurrentCompany(newJobs[0]);
     }
 
-    useEffect(() => {
-      console.log(jobs);
-    }, [jobs])
+    // useEffect(() => {
+    //   console.log(jobs);
+    // }, [jobs])
 
-    useEffect(() => {
-      console.log(companies);
-    }, [companies])
+    // useEffect(() => {
+    //   console.log(companies);
+    // }, [companies])
 
     useEffect(() => {
       console.log(currentCompany);
+      const myDuties = currentCompany.duties;
+      setDuties(myDuties);
+      console.log(myDuties);
     }, [currentCompany])
 
     useEffect(() => {
@@ -51,8 +56,10 @@ function App() {
             </h5>
           ))}
         </aside>
-        <main>
-          
+        <main className='main'>
+          {duties && duties.map(duty => (
+            <p key={duty}>{duty}</p>
+          ))}
         </main>
       </section>
     </div>
