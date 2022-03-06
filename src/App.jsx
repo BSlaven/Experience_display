@@ -56,7 +56,7 @@ function App() {
           ))}
         </aside>
         <main className='main'>
-          <h4>{currentCompany.dates}</h4>
+          <h4>{currentCompany.dates} ({currentCompany.title})</h4>
           {duties && duties.map(duty => (
             <p key={duty}>{duty}</p>
           ))}
